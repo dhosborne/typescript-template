@@ -5,7 +5,7 @@ export async function main(ns: NS): Promise<void> {
     const LRC_ARRAY = ['Level', 'Ram', 'Core']
     const hnf = ns.hacknet;
     while(true){
-        ; 
+        
         let node_count = hnf.numNodes();
                
 
