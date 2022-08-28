@@ -3,9 +3,9 @@ import { NS } from '../../NetscriptDefinitions';
 export async function main(ns: NS): Promise<void> {
     const MAX_NODES = ns.hacknet.maxNumNodes();
     const LRC_ARRAY = ['Level', 'Ram', 'Core']
-
+    const hnf = ns.hacknet;
     while(true){
-        const hnf = ns.hacknet; 
+        ; 
         let node_count = hnf.numNodes();
                
 
