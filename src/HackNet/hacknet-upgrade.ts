@@ -1,9 +1,11 @@
 import { NS } from '@ns'
 
 export async function main(ns: NS): Promise<void> {
+    ns.disableLog('sleep')
     const MAX_NODES = ns.hacknet.maxNumNodes();
     const LRC_ARRAY = ['Level', 'Ram', 'Core']
     const hnf = ns.hacknet;
+
     while(true){
         
         let node_count = hnf.numNodes();
@@ -36,7 +38,7 @@ export async function main(ns: NS): Promise<void> {
 
         // iterate nodes
         for(let i = 0; i < node_count; i++){
-            // find the most advantageous upgrade. Need Forumlas.exe
+            // find the most advantageous upgrade. Need Forumlas.exes
 
             // find any upgrade and buy it
             LRC_ARRAY.forEach(upgrade => {
@@ -46,9 +48,12 @@ export async function main(ns: NS): Promise<void> {
                     }
                 }
             });
-        }       
-    }
+        }
 
+        await ns.sleep(1000) // 1 secs
+    
+    } // end while
+    
 }
 
 /**

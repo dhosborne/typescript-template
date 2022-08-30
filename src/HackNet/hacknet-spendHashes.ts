@@ -1,7 +1,8 @@
 import { NS } from '@ns';
 
 const UPGRADES = {
-    cash:'Sell for Money'
+    cash:'Sell for Money',
+    bladeSP:'Exchange for Bladeburner SP'
 };
 
 export async function main(ns: NS): Promise<Boolean> {
@@ -11,11 +12,14 @@ export async function main(ns: NS): Promise<Boolean> {
         ns.tprintf(`Spend hashes requires an activity argument (i.e., 'cashOut')`)
         ns.exit();
     }
-    
+    let max;
     switch(ns.args[0]){
-        case 'cashOut':
-            let max = calculateMaxPurchasePower(ns, UPGRADES.cash);
+        case UPGRADES.cash:
+            max = calculateMaxPurchasePower(ns, UPGRADES.cash);
             return (makePurchase(ns, UPGRADES.cash, 'home', max))
+        case UPGRADES.bladeSP:
+            max = calculateMaxPurchasePower(ns, UPGRADES.bladeSP);
+            return(makePurchase(ns, UPGRADES.bladeSP, 'home', max));
         default:
             ns.tprintf(`${ns.args[0]} upgrade does not exist`);
             return false;
